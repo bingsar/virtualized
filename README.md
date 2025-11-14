@@ -71,3 +71,13 @@ export default defineConfig([
   },
 ])
 ```
+
+## Running with Docker
+
+You can run the project inside a Node 22 container using Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+The Vite dev server will be available at [http://localhost:5173](http://localhost:5173). Changes made in the local workspace are reflected automatically inside the container thanks to the mounted volume.

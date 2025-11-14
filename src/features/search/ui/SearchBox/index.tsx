@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { setQ, clear } from '@/features/search/model/searchSlice'
 import { Close } from '@/assets/icons.tsx'
 
+const DEBOUNCE_MS = 200
+
 export default function SearchBox() {
   const dispatch = useAppDispatch()
   const q = useAppSelector((s) => s.search.q)
@@ -14,9 +16,11 @@ export default function SearchBox() {
   }, [q])
 
   useEffect(() => {
-    if (value !== q) {
+    if (value === q) return
+    const handle = window.setTimeout(() => {
       dispatch(setQ(value))
-    }
+    }, DEBOUNCE_MS)
+    return () => window.clearTimeout(handle)
   }, [dispatch, q, value])
 
   const handleClear = () => {

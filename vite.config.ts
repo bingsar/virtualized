@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: { '@': path.resolve(__dirname, 'src') },
   },
+  cacheDir: '.vite-cache',
   css: {
     preprocessorOptions: {
       scss: {
