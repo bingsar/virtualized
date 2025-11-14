@@ -17,6 +17,17 @@
     &::placeholder {
       letter-spacing: .25px;
     }
+
+    &::-webkit-search-cancel-button, ::-webkit-search-decoration {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    &::-ms-clear {
+      display: none;
+      width: 0;
+      height: 0;
+    }
   }
 
   &_close {
@@ -25,6 +36,8 @@
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    background: transparent;
+    border: none;
 
     svg {
       display: block;

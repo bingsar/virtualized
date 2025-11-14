@@ -30,17 +30,27 @@ export default function SearchBox() {
 
   return (
     <div className="search-box">
+      <label className="visually-hidden" htmlFor="search-input">
+        Search ships
+      </label>
       <input
         id="search-input"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Search ships"
         className="search-box_input"
+        type="search"
+        aria-label="Search ships"
       />
       {value && (
-        <div className="search-box_close" onClick={handleClear}>
+        <button
+          type="button"
+          className="search-box_close"
+          onClick={handleClear}
+          aria-label="Clear search"
+        >
           <Close />
-        </div>
+        </button>
       )}
     </div>
   )
