@@ -1,0 +1,31 @@
+@use '@/shared/styles/variables' as v;
+@use '@/shared/styles/mixins' as m;
+@use '@/shared/styles/reset' as r;
+@use '@/shared/styles/breakpoints' as b;
+
+body {
+  background: v.$color-bg;
+  min-height: 100dvh;
+}
+
+button,input,select,textarea { font: inherit; color: inherit; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 1, 1);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  html.filters-scroll-lock,
+  body.filters-scroll-lock {
+    overflow: hidden;
+    height: 100%;
+  }
+}

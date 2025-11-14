@@ -1,0 +1,121 @@
+@use '@/shared/styles/variables' as v;
+
+.error-page {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: v.$color-bg;
+  color: v.$color-text;
+
+  &_container {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+  }
+
+  &_title {
+    margin: 0 0 12px;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  &_text {
+    margin: 0 0 24px;
+    opacity: 0.8;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &_actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+
+    > * {
+      flex: 1 1 calc(50% - 6px);
+    }
+
+    > *:last-child:nth-child(odd) {
+      flex-basis: 100%;
+    }
+  }
+
+  &_btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: #f2f2f2;
+    transition: transform .06s ease, background .2s ease, border-color .2s ease;
+    font-weight: 600;
+
+    &:active { transform: translateY(1px); }
+
+    &_primary {
+      background: #111;
+      color: #fff;
+    }
+
+    &_ghost {
+      background: transparent;
+      border-color: #ddd;
+    }
+
+    &_link {
+      background: transparent;
+      border-color: transparent;
+      text-decoration: underline;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  }
+
+  &_details {
+    text-align: left;
+    margin-top: 16px;
+  }
+
+  &_details-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    word-break: break-word;
+  }
+
+  &_pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+    padding: 12px;
+    background: rgba(0,0,0,0.05);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .error-page {
+    --ep-bg: #0b0b0b;
+    --ep-fg: #f5f5f5;
+
+    &_btn {
+      background: #1d1d1d;
+      color: #f5f5f5;
+      border-color: #2a2a2a;
+
+      &_primary {
+        background: #f5f5f5;
+        color: #111;
+      }
+
+      &_ghost {
+        background: transparent;
+        border-color: #333;
+      }
+    }
+
+    &_pre { background: rgba(255,255,255,0.06); }
+  }
+}

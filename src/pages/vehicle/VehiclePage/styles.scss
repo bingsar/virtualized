@@ -1,0 +1,63 @@
+@use '@/shared/styles/variables' as v;
+@use '@/shared/styles/breakpoints' as b;
+
+.vehicle-page {
+  display: grid;
+  gap: 16px;
+  margin: 0 auto;
+  width: 100%;
+
+  &_bundle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  a {
+    color: v.$color-text;
+
+    &:hover {
+      color: v.$color-gray;
+    }
+  }
+
+  &_image {
+    position: relative;
+    max-width: 360px;
+
+    @include b.up-lg {
+      max-width: 435px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.vehicle-page_description {
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  background: rgba(255, 255, 255, .04);
+  line-height: 1.6;
+  width: fit-content;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0;
+    white-space: pre-line;
+    font-size: 15px;
+  }
+}

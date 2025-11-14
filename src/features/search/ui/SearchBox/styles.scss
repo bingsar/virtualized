@@ -1,0 +1,37 @@
+@use '@/shared/styles/variables' as v;
+
+.search-box {
+  position: relative;
+
+  &_input {
+    background: v.$color-surface;
+    width: 200px;
+    height: 40px;
+    padding: 5px 24px 5px 5px;
+    outline: none;
+    color: v.$color-text;
+    border-radius: 0;
+    caret-color: v.$color-accent;
+    border: none;
+
+    &::placeholder {
+      letter-spacing: .25px;
+    }
+  }
+
+  &_close {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    svg {
+      display: block;
+
+      path {
+        stroke: v.$color-text;
+      }
+    }
+  }
+}

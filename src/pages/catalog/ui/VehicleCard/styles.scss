@@ -1,0 +1,211 @@
+@use '@/shared/styles/variables' as v;
+@use '@/shared/styles/breakpoints' as b;
+
+.vehicle-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 400 / 300;
+  overflow: hidden;
+  will-change: transform;
+
+  &:active {
+    animation: vehicle-card-bounce .2s ease-out;
+
+    @include b.up-lg {
+      animation: none;
+    }
+  }
+
+  @include b.up-lg {
+    aspect-ratio: 600 / 500;
+    &:hover .vehicle-card_overlay, &:hover .vehicle-card_content {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity .2s ease-out;
+    }
+
+    &:active {
+      transform: unset;
+    }
+  }
+
+  &_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    padding: 20px;
+
+    &:before {
+      background-color: #333;
+      width: 1px;
+      height: 300px;
+      position: absolute;
+      top: 19px;
+      bottom: 0;
+      left: 27px;
+      content: "";
+    }
+
+    &_title {
+      position: relative;
+      padding-left: 20px;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 20px;
+      font-weight: 400;
+      letter-spacing: .25px;
+
+      &:before {
+        background: url("data:image/svg+xml,%3csvg%20width='11'%20height='17'%20viewBox='0%200%2011%2017'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11%208L6%2011V8V5L11%208Z'%20fill='%23999999'/%3e%3cpath%20d='M6%2012V17L11%2014V9L6%2012Z'%20fill='%23999999'/%3e%3cpath%20d='M0%203V8L5%205V0L0%203Z'%20fill='%23999999'/%3e%3cpath%20d='M5%2012V17L0%2014V9L5%2012Z'%20fill='%23999999'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        position: absolute;
+        z-index: 1;
+        content: "";
+        width: 11px;
+        height: 17px;
+        top: 0;
+        left: 2px;
+      }
+    }
+
+    &_body {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      position: relative;
+      padding-left: 20px;
+
+      &:before {
+        position: absolute;
+        z-index: 1;
+        content: "";
+        background: url("data:image/svg+xml,%3csvg%20width='7'%20height='11'%20viewBox='0%200%207%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3%208H6V5H7V9H3V8Z'%20fill='%23666666'/%3e%3crect%20y='2'%20width='5'%20height='5'%20fill='%23999999'/%3e%3cline%20x1='3.5'%20y1='2'%20x2='3.5'%20stroke='black'/%3e%3cline%20x1='3.5'%20y1='9'%20x2='3.5'%20y2='11'%20stroke='black'/%3e%3c/svg%3e");
+        width: 7px;
+        height: 11px;
+        top: 8px;
+        left: 4px;
+      }
+    }
+
+    &_level {
+      opacity: .8;
+      font-size: 14px;
+    }
+
+    &_meta {
+      position: relative;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: v.$space-2 0;
+      display: flex;
+      align-items: center;
+      gap: v.$space-2;
+      font-size: 12px;
+      color: v.$color-text;
+      opacity: .95;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    }
+
+    &_flag {
+      width: 18px;
+      height: 12px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    &_nation {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    &_type-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+
+      &_btn {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      margin: 20px;
+    }
+  }
+
+  &_link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  &_bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    object-fit: contain;
+    display: block;
+  }
+
+  &_header {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: v.$space-2;
+    color: v.$color-text;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    z-index: 1;
+
+    @include b.up-lg {
+      bottom: 80px;
+      top: unset;
+    }
+  }
+
+  &_title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-block-start: 0;
+  }
+
+  &_overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .4);
+    border: 1px solid v.$color-disabled-25;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease-out;
+    pointer-events: none;
+  }
+}
+
+@keyframes vehicle-card-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

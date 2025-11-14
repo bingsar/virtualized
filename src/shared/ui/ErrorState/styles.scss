@@ -1,0 +1,10 @@
+.error-state {
+  display: flex;
+
+  &_container {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,8 @@
+@use '@/shared/styles/variables' as v;
+
+*,*::before,*::after { box-sizing: border-box; }
+html,body,#root { height: 100%; scrollbar-gutter: stable;  min-height: 100%; }
+a {text-decoration: none; color: v.$color-accent;}
+a:hover {text-decoration: none;}
+body { margin: 0; font-family: Roboto Condensed,Arial Narrow,arial,sans-serif; background: v.$color-bg; color: v.$color-text; }
+button,input,select,textarea { font: inherit; color: inherit; padding: 0; margin: 0; }

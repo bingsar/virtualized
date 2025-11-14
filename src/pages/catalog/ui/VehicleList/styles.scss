@@ -1,0 +1,37 @@
+@use '@/shared/styles/breakpoints' as b;
+
+.vehicle-list {
+  position: relative;
+  height: 100%;
+}
+
+.vehicle-list_grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+
+  @include b.up-sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  @include b.up-lg {
+    max-width: unset;
+    margin: unset;
+  }
+}
+
+.vehicle-list_item {
+  width: 100%;
+}
+
+.vehicle-list_empty {
+  text-align: center;
+  padding: 48px 0;
+  min-height: 40vh;
+}
+
+.vehicle-list_empty-text {
+  opacity: 0.75;
+}

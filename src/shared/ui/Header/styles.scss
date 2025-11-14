@@ -1,0 +1,27 @@
+@use '@/shared/styles/variables' as v;
+
+.container {
+  display: grid;
+  gap: v.$space-8;
+
+
+  .nav-bar {
+    position: relative;
+    display: grid;
+    gap: v.$space-3;
+    z-index: 2;
+
+    &_title {
+      width: 200px;
+    }
+
+    &_holder {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &_link {
+      color: v.$color-white;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+@use '@/shared/styles/variables' as v;
+
+.filters {
+  &--mobile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 14px;
+    cursor: pointer;
+  }
+
+  &_trigger-label {
+    font-size: 16px;
+    line-height: 30px;
+    opacity: .75;
+  }
+
+  &_trigger-summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &_item {
+      font-size: 16px;
+      line-height: 30px;
+      padding: 4px 10px;
+      opacity: .9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &_mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    background: v.$color-bg;
+  }
+
+  &_mobile-panel {
+    width: 100%;
+    height: 100%;
+    background: v.$color-bg;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &_mobile-title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &_mobile-close {
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 14px;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+
+  &_mobile-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &_mobile-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &_mobile-section-title {
+    margin: 0;
+    font-size: 13px;
+    opacity: .8;
+  }
+
+  &_list--mobile {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &_option--lg {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}

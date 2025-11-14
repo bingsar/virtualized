@@ -1,0 +1,36 @@
+@use '@/shared/styles/variables' as v;
+@use '@/shared/styles/breakpoints' as b;
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: v.$space-4;
+
+  @include b.up-lg {
+    justify-content: start;
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: v.$space-2;
+    row-gap: v.$space-2 - 2px;
+    padding: 6px v.$space-3;
+  }
+
+  &_flag-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: v.$space-2;
+  }
+
+  &_flag {
+    display: inline-block;
+    object-fit: contain;
+    width: 18px;
+    height: 12px;
+    border-radius: 2px;
+  }
+}
