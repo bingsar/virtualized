@@ -1,11 +1,11 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: { '@': path.resolve(__dirname, 'src') }
+    alias: { '@': path.resolve(__dirname, 'src') },
   },
   css: {
     preprocessorOptions: {
@@ -13,9 +13,9 @@ export default defineConfig({
         additionalData: `
           @use "@/shared/styles/variables" as *;
           @use "@/shared/styles/mixins" as *;
-        `
-      }
-    }
+        `,
+      },
+    },
   },
   server: {
     proxy: {
@@ -23,8 +23,14 @@ export default defineConfig({
         target: 'https://vortex.worldofwarships.eu',
         changeOrigin: true,
         secure: true,
-        rewrite: p => p.replace(/^\/wows/, '/api/encyclopedia/en')
-      }
-    }
-  }
+        rewrite: (p) => p.replace(/^\/wows/, '/api/encyclopedia/en'),
+      },
+    },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
+    css: true,
+  },
 })
