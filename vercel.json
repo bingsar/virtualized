@@ -1,4 +1,0 @@
-{
-  "framework": "vite",
-  "rewrites": [{ "source": "/api/wows/(.*)", "destination": "/api/wows" }]
-}
