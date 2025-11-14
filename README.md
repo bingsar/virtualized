@@ -43,6 +43,6 @@ The Vite dev server will be available at [http://localhost:5173](http://localhos
 | Variable        | Description                                                | Default        |
 | --------------- | ---------------------------------------------------------- | -------------- |
 | `VITE_API_BASE` | Base URL for the World of Warships encyclopedia endpoints. | `/wows/` (dev) |
-- In local/dev the default `/wows/` works because Vite proxies requests to the WG API.
-- In production set `VITE_API_BASE=https://vortex.worldofwarships.eu/api/encyclopedia/en/` so the frontend talks directly to the public API.
 
+- In local/dev the default `/wows/` works because Vite proxies requests to the WG API.
+- In production set `VITE_API_BASE=/api/wows/` to use the bundled serverless proxy (`api/wows/[...path].ts`), which forwards requests to the public API and adds CORS headers.
