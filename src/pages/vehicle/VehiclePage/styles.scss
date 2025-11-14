@@ -20,6 +20,7 @@
 
   a {
     color: v.$color-text;
+    width: fit-content;
 
     &:hover {
       color: v.$color-gray;

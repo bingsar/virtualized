@@ -9,8 +9,8 @@ import {
   selectVehicleTypeKeys,
   selectVehicleTypeNameMap,
   selectIconsBase,
-  selectFilterAvailability,
-} from '@/entities/vehicle/model/selectors'
+} from '@/entities/vehicle/model/vehicleSlice'
+import { selectFilterAvailability } from '@/entities/vehicle/model/vehicleList.selectors'
 import { getAbsoluteIconPath } from '@/shared/lib/url'
 import { Dropdown } from '@/shared/ui/Dropdown'
 import { toRoman } from '@/shared/lib/roman.ts'
