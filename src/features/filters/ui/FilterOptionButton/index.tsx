@@ -22,6 +22,7 @@ export default function FilterOptionButton({
       type="button"
       className={`filters_option${active ? ' filters_option--active' : ''}${sizeClass}`}
       onClick={onClick}
+      aria-pressed={active}
     >
       {icon ? <img className="filters_flag" src={icon} alt="" width={18} height={12} /> : null}
       <span>{children}</span>

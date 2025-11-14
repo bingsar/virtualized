@@ -116,7 +116,8 @@ const vehiclesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addMatcher(wowsApi.endpoints.getMediaPath.matchFulfilled, (state, { payload }) => {
-      state.iconsBase = payload?.data ?? ''
+      const data = payload?.data ?? ''
+      state.iconsBase = data
     })
 
     builder.addMatcher(wowsApi.endpoints.getNations.matchFulfilled, (state, { payload }) => {
