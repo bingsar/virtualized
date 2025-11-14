@@ -1,10 +1,10 @@
 import './styles.scss'
 import { useAppSelector } from '@/app/hooks'
 import {
-  makeSelectVehicleDisplayById,
-  makeSelectVehicleTypeDisplayById,
-} from '@/entities/vehicle/model/selectors'
-import { Link } from 'react-router-dom'
+  selectVehicleDisplayById,
+  selectVehicleTypeDisplayById,
+} from '@/entities/vehicle/model/vehicleDetails.selectors'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/shared/ui/Button'
 import { toRoman } from '@/shared/lib/roman'
 import type { Vehicle } from '@/shared/types/api'
@@ -17,15 +17,23 @@ type VehicleCardProps = {
 }
 
 export default function VehicleCard({ vehicle, eager }: VehicleCardProps) {
-  const display = useAppSelector(makeSelectVehicleDisplayById(vehicle.id))
-  const typeDisplay = useAppSelector(makeSelectVehicleTypeDisplayById(vehicle.id))
+  const location = useLocation()
+  const display = useAppSelector((state) => selectVehicleDisplayById(state, vehicle.id))
+  const typeDisplay = useAppSelector((state) => selectVehicleTypeDisplayById(state, vehicle.id))
 
   if (!display) return null
 
   const { title, nationLabel, nationIcon, image: img } = display
 
+  const linkState = {
+    from: {
+      pathname: location.pathname,
+      search: location.search,
+    },
+  }
+
   return (
-    <Link to={`/vehicle/${vehicle.id}`} className="vehicle-card_link">
+    <Link to={`/vehicle/${vehicle.id}`} state={linkState} className="vehicle-card_link">
       <article className="vehicle-card">
         {img && (
           <img

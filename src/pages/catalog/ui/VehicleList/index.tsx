@@ -1,7 +1,7 @@
 import './styles.scss'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useAppSelector } from '@/app/hooks'
-import { selectFilteredVehicles } from '@/entities/vehicle/model/selectors'
+import { selectFilteredVehicles } from '@/entities/vehicle/model/vehicleList.selectors'
 import VehicleCard from '@/pages/catalog/ui/VehicleCard'
 
 export default function VehicleList() {

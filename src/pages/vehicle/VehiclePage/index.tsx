@@ -1,11 +1,11 @@
 import './styles.scss'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 import { useAppSelector } from '@/app/hooks'
 import {
-  makeSelectVehicleById,
-  makeSelectVehicleDisplayById,
-  makeSelectVehicleTypeDisplayById,
-} from '@/entities/vehicle/model/selectors'
+  selectVehicleById,
+  selectVehicleDisplayById,
+  selectVehicleTypeDisplayById,
+} from '@/entities/vehicle/model/vehicleDetails.selectors'
 import {
   useGetVehiclesQuery,
   useGetNationsQuery,
@@ -19,6 +19,7 @@ import { toRoman } from '@/shared/lib/roman'
 
 export default function VehiclePage() {
   const { id = '' } = useParams()
+  const location = useLocation()
 
   const vehiclesQ = useGetVehiclesQuery()
   const nationsQ = useGetNationsQuery()
@@ -33,9 +34,9 @@ export default function VehiclePage() {
     mediaQ.isLoading
   const error = vehiclesQ.isError || nationsQ.isError || typesQ.isError || mediaQ.isError
 
-  const vehicle = useAppSelector(makeSelectVehicleById(id))
-  const display = useAppSelector(makeSelectVehicleDisplayById(id))
-  const typeDisplay = useAppSelector(makeSelectVehicleTypeDisplayById(id))
+  const vehicle = useAppSelector((state) => selectVehicleById(state, id))
+  const display = useAppSelector((state) => selectVehicleDisplayById(state, id))
+  const typeDisplay = useAppSelector((state) => selectVehicleTypeDisplayById(state, id))
 
   if (loading) return <PageLoader />
   if (error)
@@ -52,19 +53,31 @@ export default function VehiclePage() {
 
   if (!vehicle || !display) {
     return (
-      <div className="container">
+      <div>
         <p>Not found</p>
-        <Link to="/">Back</Link>
+        <Link
+          to={
+            location.state?.from
+              ? { pathname: location.state.from.pathname, search: location.state.from.search }
+              : '/'
+          }
+        >
+          Back
+        </Link>
       </div>
     )
   }
 
   const { title, nationLabel, image: icon, nationIcon } = display
   const description = getDescription(vehicle)
+  const backLink =
+    location.state?.from && typeof location.state.from.pathname === 'string'
+      ? { pathname: location.state.from.pathname, search: location.state.from.search }
+      : '/'
 
   return (
     <div className="vehicle-page">
-      <Link to="/">Back</Link>
+      <Link to={backLink}>Back</Link>
       {icon && (
         <div className="vehicle-page_image">
           <img src={icon} alt={title} width={435} height={256} style={{ objectFit: 'contain' }} />
