@@ -1,4 +1,4 @@
-## Home Task for the World of Warships, PC, Frontend Game Developer
+## Home Task
 
 ### Getting Started Locally
 
